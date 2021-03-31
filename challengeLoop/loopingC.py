@@ -24,8 +24,13 @@ for eachdict in farms:
        # print(eachdict['agriculture'])
        for agitem in eachdict['agriculture']:
            if agitem not in yuck:
-           print(agitem)
+               print(agitem)
 
 
 
-        
+#list comprehension
+noveggies = [agitem for agitem in farms[2]['agriculture'] if agitem not in ['carrots', 'celery']]
+
+print(noveggies)
+
+
