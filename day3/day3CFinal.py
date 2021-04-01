@@ -54,8 +54,8 @@ def calculateAgain():
         calculator()
     elif calculate_again.lower == 'n':
         print("You have a good day!")
-    else:
-        calculateAgain()
+        sys.exit("You have a good day!")
+
 
 calculator()
 calculateAgain()
