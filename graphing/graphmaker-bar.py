@@ -22,7 +22,7 @@ def main():
     plt.xticks(ind, ("Q1", "Q2", "Q3", "Q4"))
     plt.yticks(np.arange(0, 81, 10))
     plt.legend((p1[0], p2[0]), ("LAN", "WAN"))
-    plt.savefig("/home/student/static/2018summary.png")
+    plt.savefig("/home/student/mycode/graphing/2018summary.png")
 
 if __name__ == "__main__":
     main()
