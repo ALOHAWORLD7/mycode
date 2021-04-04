@@ -121,28 +121,49 @@ while True:
           print("Yo HighSpeed, you think you can outrun THE MONSTER and survive this stage???? Bruhhhh... let\'s see if you will survive...")
           #creating a random time in seconds for the player to escape
           run_away = randint(0, 10) 
-          print(run_away )
-
+          print(f"You took {run_away} seconds to run away.")
+              
           if run_away >= 7:
-              print ("You were too slow to escape. You are now dead. You took " + run_away + "seconds")
-              break
-          if run_away >= 3:
-              print("Yo HighSpeed, piece of advise to you - you better start doing more cardio ... Your run time wasn't that great.  You barely survived. Anyhoo, good luck for next stage.")
-              currentroom = rooms[2]
-              break
+              print (f"You were too slow to escape. You are now dead. You took {run_away} seconds.")
+              print("Game Over")
+              break 
+          elif run_away >= 3:
+              print(f"Yo HighSpeed, piece of advise to you - you better start doing more cardio ... Your run time wasn't that great. You took {run_away} seconds to run away.  You barely survived. Anyhoo, good luck for next stage.")
+              #player will be automatically transferred to Dining Room.
+              currentRoom = 'Dining Room'
+              print("Now, you are in Dining Room.")
+              
           else: 
-              print("YOU SURVIVED. You esacped in " + run_away + "seconds. That's awesome.  What is your 2 mile run time? I'm serious. What is it?")
-
-
-
+              #if the run_away time is < 3, then player will be automatically placed in Dining room.
+              print(f"YOU SURVIVED. You esacped in {run_away} seconds. That\'s awesome.")
+              currentRoom = "Dining Room"
+              print("Now, you are in Dining Room.")
+      if action == 'cook':
+          print("You will now be cooking for THE MONSTER. Ensure it tastes good otherwise you know what will happen to you...")
+          playerResponse1 = input("Monster: Do you know how to cook? \n Enter y or n: \n").lower()
+          #asking for response from player if he/she can cook or not
+          if playerResponse1 == 'y':
+              print("Monster: I need you to cook steak for me. Medium rare, please.")
+              cook_quality = randint(1,3)
+              if cook_quality == 1:
+                  print("Monster: Steak was cooked to perfection. I will let you go this time.\n You SURVIVED!")
+                  currentRoom = 'Dining Room'
+                  print("Now, you are in Dining Room.")
+              else:
+                  print("You burnt my steak. That was the last piece I had. You are done.")
+                  print('You were killed by THE MONSTER. Make sure you learn how to cook Steak and try again.  GAME OVER.')
+                  break
 
   ## Define how a player can win
+  #when a player is  in Garden with key and potion
   if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
     print('You escaped the house with the ultra rare key and magic potion... YOU WIN!')
     break
 
   ## If a player enters a room with a monster
-  elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
-    print('A monster has got you... GAME OVER!')
+  #elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
+   # print('A monster has got you... GAME OVER!')
+  elif currentRoom == 'Garden' and 'key' not in inventory and 'potion' not in inventory:
+    print('You were not able to escape the house with the ultra rare key and magic potion... YOU LOSE! GAME OVER!')  
     break
 
